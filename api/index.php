@@ -1135,22 +1135,17 @@ img, svg { display: block; }
               <span class="stack-tag">HTML/CSS</span>
             </div>
           </div>
-          <h3 class="project-title">Application PHP – Formulaires et Gestion des données</h3>
-          <p class="project-desc">Mini application PHP complète comprenant plusieurs fonctionnalités :</p>
+          <h3 class="project-title">Mes Projets</h3>
+          <p class="project-desc">Mini projets :</p>
           <ul class="project-features">
-            <li>Formulaire avec champs Nom et Prénom</li>
-            <li>Liens dynamiques avec passage de paramètres (GET)</li>
-            <li>Formulaire d'inscription complet (POST)</li>
-            <li>Affichage des données en tableau structuré</li>
+            <li>Formulaire avec champs Nom et Prénom ...</li>
+            <li>Triangle en *</li>
+            <li>Tableau de Multiplication</li>
           </ul>
           <div class="project-actions">
-            <a href="#" class="btn btn-primary btn-sm">
+            <a href="https://github.com/houssamchelha-commits" class="btn btn-primary btn-sm">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
               Voir projet
-            </a>
-            <a href="#" class="btn btn-ghost btn-sm">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              Code source
             </a>
           </div>
         </div>
