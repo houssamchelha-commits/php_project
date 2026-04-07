@@ -37,7 +37,7 @@ a:hover {
 <div class="container">
     <h1>Choisir un exercice</h1>
 
-    <a href="tableau.php">Exercice 1 : Tableau de multiplication</a>
+    <a href="table.php">Exercice 1 : Tableau de multiplication</a>
     <a href="triangle.php">Exercice 2 : Triangle en *</a>
 </div>
 
