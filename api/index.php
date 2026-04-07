@@ -1,10 +1,14 @@
-/* =========================================
-   PORTFOLIO — Houssam Chelha
-   CSS Stylesheet
-   ========================================= */
-
-/* --- CSS VARIABLES --- */
-:root {
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Houssam Chelha — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
   --bg-main:     #37353E;
   --bg-secondary:#44444E;
   --accent:      #715A5A;
@@ -962,3 +966,435 @@ img, svg { display: block; }
   .project-header { flex-direction: column; align-items: flex-start; }
   .project-badge { position: static; align-self: flex-start; }
 }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">Chelha Houssam</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Accueil</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#exercises">Exercices</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Bienvenue sur mon portfolio</p>
+      <h1 class="hero-name">
+        <span class="name-first">Houssam</span>
+        <span class="name-last">Chelha</span>
+      </h1>
+      <p class="hero-title">Stagiaire en Développement Digital</p>
+      <p class="hero-intro">Passionné par la création web, j'explore chaque jour<br>les possibilités infinies du développement digital.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn btn-ghost">Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Défiler</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">01 / À propos</span>
+        <h2 class="section-title">Qui suis-je ?</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-avatar">
+            <div class="avatar-initials" style="overflow: hidden;"><img width="100%" src="../public/5fa04d40-cdc0-4484-a99d-d2c31afa4ab0.png" alt=""></div>
+            <div class="avatar-ring"></div>
+          </div>
+          <div class="about-meta">
+            <div class="meta-item">
+              <span class="meta-label">Âge</span>
+              <span class="meta-value">19 ans</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Statut</span>
+              <span class="meta-value">Stagiaire</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Pays</span>
+              <span class="meta-value">Maroc 🇲🇦</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="about-lead">Je suis un développeur en formation, curieux et motivé.</p>
+          <p>Depuis que j'ai découvert le monde du web, je me consacre à maîtriser les technologies fondamentales : <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong> et <strong>PHP</strong>. Chaque ligne de code est pour moi une opportunité d'apprendre et de progresser.</p>
+          <p>Mon état d'esprit de croissance me pousse à chercher constamment à m'améliorer, à relever de nouveaux défis et à transformer les problèmes en solutions élégantes. Je crois fermement que la persévérance et la curiosité sont les clés du succès dans ce domaine.</p>
+          <div class="about-quote">
+            <blockquote>"Le code est ma façon de donner vie aux idées."</blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">02 / Compétences</span>
+        <h2 class="section-title">Mes Technologies</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card" data-level="85">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l2 16 6 2 6-2 2-16H4z"/><path d="M8 8h8M8.5 12h7l-.5 4-3 1-3-1-.3-2"/></svg>
+          </div>
+          <h3 class="skill-name">HTML</h3>
+          <p class="skill-desc">Structure sémantique et accessibilité web</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="85"></div>
+          </div>
+          <span class="skill-percent">85%</span>
+        </div>
+        <div class="skill-card" data-level="80">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l2 16 6 2 6-2 2-16H4z"/><path d="M8 12h8M8 8h5l-.5 4h-4.5"/></svg>
+          </div>
+          <h3 class="skill-name">CSS</h3>
+          <p class="skill-desc">Mise en page moderne, Flexbox & Grid</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="80"></div>
+          </div>
+          <span class="skill-percent">80%</span>
+        </div>
+        <div class="skill-card" data-level="65">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M7 17v-4l3 3 3-3v4M16 14a2 2 0 0 0 2-2V8"/></svg>
+          </div>
+          <h3 class="skill-name">JavaScript</h3>
+          <p class="skill-desc">Interactivité et logique côté client</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="65"></div>
+          </div>
+          <span class="skill-percent">65%</span>
+        </div>
+        <div class="skill-card" data-level="70">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M9 8l-3 4 3 4M15 8l3 4-3 4M13 7l-2 10"/></svg>
+          </div>
+          <h3 class="skill-name">PHP</h3>
+          <p class="skill-desc">Développement back-end et formulaires</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="70"></div>
+          </div>
+          <span class="skill-percent">70%</span>
+        </div>
+        <div class="skill-card" data-level="60">
+          <div class="skill-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 5v5c0 1.66-4.03 3-9 3S3 11.66 3 10V5"/><path d="M21 10v4c0 1.66-4.03 3-9 3S3 15.66 3 14v-4"/><path d="M21 14v5c0 1.66-4.03 3-9 3S3 20.66 3 19v-5"/></svg>
+          </div>
+          <h3 class="skill-name">MySQL</h3>
+          <p class="skill-desc">Gestion de bases de données relationnelles</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="60"></div>
+          </div>
+          <span class="skill-percent">60%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">03 / Projets</span>
+        <h2 class="section-title">Mes Réalisations</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card featured">
+          <div class="project-badge">Featured</div>
+          <div class="project-header">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M9 8l-3 4 3 4M15 8l3 4-3 4M13 7l-2 10"/></svg>
+            </div>
+            <div class="project-stack">
+              <span class="stack-tag">PHP</span>
+              <span class="stack-tag">MySQL</span>
+              <span class="stack-tag">HTML/CSS</span>
+            </div>
+          </div>
+          <h3 class="project-title">Application PHP – Formulaires et Gestion des données</h3>
+          <p class="project-desc">Mini application PHP complète comprenant plusieurs fonctionnalités :</p>
+          <ul class="project-features">
+            <li>Formulaire avec champs Nom et Prénom</li>
+            <li>Liens dynamiques avec passage de paramètres (GET)</li>
+            <li>Formulaire d'inscription complet (POST)</li>
+            <li>Affichage des données en tableau structuré</li>
+          </ul>
+          <div class="project-actions">
+            <a href="#" class="btn btn-primary btn-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Voir projet
+            </a>
+            <a href="#" class="btn btn-ghost btn-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Code source
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXERCISES -->
+  <section class="section exercises" id="exercises">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">04 / Exercices</span>
+        <h2 class="section-title">Travaux Pratiques</h2>
+      </div>
+      <div class="exercises-list">
+        <div class="exercise-item">
+          <div class="exercise-number">01</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier 1:</h3>
+            <p class="exercise-desc">Création d'un formulaire TPs avec des traitements .</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="atelier1.php" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <!--
+        <div class="exercise-item">
+          <div class="exercise-number">02</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Liens dynamiques (GET)</h3>
+            <p class="exercise-desc">Mise en place de liens dynamiques avec passage de paramètres via l'URL (méthode GET). Récupération et affichage des données transmises.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">HTML</span>
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="#" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        -->
+        <div class="exercise-item atelier">
+          <div class="exercise-number">★</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — Inscription</h3>
+            <p class="exercise-desc">Formulaire d'inscription complet : saisie des informations personnelles.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="formulaire.php" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">05 / Contact</span>
+        <h2 class="section-title">Travaillons ensemble</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="contact-lead">Vous avez un projet ou une question ? N'hésitez pas à me contacter, je serai ravi d'échanger avec vous.</p>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <span class="detail-label">Email</span>
+              <span class="detail-value">houssamchelha@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <span class="detail-label">Localisation</span>
+              <span class="detail-value">Maroc</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Nom complet</label>
+            <input type="text" id="name" name="name" placeholder="Votre nom" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            Envoyer le message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+          <div class="form-success" id="formSuccess">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Message envoyé avec succès !
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <span class="footer-logo">Celha Houssam</span>
+        <p class="footer-text">© 2025 Houssam Chelha — Stagiaire en Développement Digital</p>
+        <p class="footer-made"> &lt;3 </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  navLinks.classList.toggle('open');
+});
+
+// Close mobile menu when a link is clicked
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    navLinks.classList.remove('open');
+  });
+});
+
+
+// --- SCROLL REVEAL ---
+const revealEls = document.querySelectorAll(
+  '.section-header, .about-card, .about-text, .skill-card, .project-card, .exercise-item, .contact-info, .contact-form'
+);
+
+revealEls.forEach(el => el.classList.add('reveal'));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Stagger children within a group
+      const delay = entry.target.dataset.delay || 0;
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, delay);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+// Add staggered delays for grouped elements
+document.querySelectorAll('.skill-card').forEach((el, i) => {
+  el.dataset.delay = i * 80;
+});
+document.querySelectorAll('.exercise-item').forEach((el, i) => {
+  el.dataset.delay = i * 100;
+});
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+
+// --- SKILL BARS: animate on enter ---
+const skillBars = document.querySelectorAll('.skill-bar');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const width = bar.dataset.width;
+      setTimeout(() => {
+        bar.style.width = width + '%';
+      }, 300);
+      barObserver.unobserve(bar);
+    }
+  });
+}, { threshold: 0.3 });
+
+skillBars.forEach(bar => barObserver.observe(bar));
+
+
+// --- CONTACT FORM: submit handler ---
+const contactForm = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const btn = contactForm.querySelector('button[type="submit"]');
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
+
+  // Simulate send
+  setTimeout(() => {
+    contactForm.reset();
+    btn.textContent = 'Envoyer le message';
+    btn.disabled = false;
+    formSuccess.classList.add('visible');
+    setTimeout(() => formSuccess.classList.remove('visible'), 5000);
+  }, 1400);
+});
+
+
+// --- SMOOTH ACTIVE NAV LINK ---
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navAnchors.forEach(a => {
+        a.style.color = '';
+        if (a.getAttribute('href') === '#' + id) {
+          a.style.color = 'var(--text-light)';
+        }
+      });
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+  </script>
+</body>
+</html>
