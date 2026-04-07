@@ -1018,7 +1018,7 @@ img, svg { display: block; }
       <div class="about-grid">
         <div class="about-card">
           <div class="about-avatar">
-            <div class="avatar-initials" style="overflow: hidden;"><img width="100%" src="../public/5fa04d40-cdc0-4484-a99d-d2c31afa4ab0.png" alt=""></div>
+            <div class="avatar-initials" style="overflow: hidden;"><img width="100%" src="/5fa04d40-cdc0-4484-a99d-d2c31afa4ab0.png" alt=""></div>
             <div class="avatar-ring"></div>
           </div>
           <div class="about-meta">
