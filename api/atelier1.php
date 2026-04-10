@@ -6,29 +6,43 @@
 
 <style>
 body {
-    font-family: Arial;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    background-color: #37353E;
+    color: #D3DAD9;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    margin-top: 100px;
+    width: 80%;
+    margin: 80px auto;
+    background-color: #44444E;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+
+h1 {
+    margin-bottom: 30px;
 }
 
 a {
     display: block;
-    margin: 20px auto;
+    margin: 15px auto;
     padding: 15px;
-    width: 250px;
-    background-color: #37353E;
+    width: 300px;
+    background-color: #715A5A;
     color: white;
     text-decoration: none;
     border-radius: 8px;
+    transition: 0.3s;
 }
 
 a:hover {
-    background-color: #44444E;
+    background-color: #5c4747;
 }
+
 </style>
 
 </head>
