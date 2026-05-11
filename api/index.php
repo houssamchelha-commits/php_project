@@ -1212,7 +1212,7 @@ img, svg { display: block; }
               <span class="ex-tag">PHP</span>
             </div>
           </div>
-          <a href="efruit_store/login.php" class="exercise-link">
+          <a href="efruit_store/index.php" class="exercise-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
