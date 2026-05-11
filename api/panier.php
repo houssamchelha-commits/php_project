@@ -6,6 +6,10 @@ if(!isset($_SESSION['user'])){
     exit();
 }
 
+if(!isset($_SESSION['panier'])){
+    $_SESSION['panier'] = [];
+}
+
 if(isset($_GET['remove'])){
 
     $index = $_GET['remove'];
@@ -26,6 +30,7 @@ $total = 0;
 <title>Panier</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -73,6 +78,7 @@ background:white;
 border-radius:20px;
 padding:30px;
 box-shadow:0 5px 15px rgba(0,0,0,.1);
+margin-bottom:50px;
 }
 
 .item{
@@ -81,6 +87,7 @@ justify-content:space-between;
 align-items:center;
 border-bottom:1px solid #eee;
 padding:20px 0;
+gap:20px;
 }
 
 .left{
@@ -100,6 +107,7 @@ border-radius:15px;
 color:#16a34a;
 font-size:20px;
 font-weight:bold;
+margin-top:10px;
 }
 
 .remove{
@@ -117,6 +125,14 @@ font-size:30px;
 font-weight:bold;
 color:#16a34a;
 }
+
+.empty{
+text-align:center;
+font-size:25px;
+padding:50px 0;
+color:#777;
+}
+
 </style>
 
 </head>
@@ -130,6 +146,8 @@ color:#16a34a;
 <h1 class="title">Votre Panier</h1>
 
 <div class="container">
+
+<?php if(count($_SESSION['panier']) > 0){ ?>
 
 <?php foreach($_SESSION['panier'] as $index=>$fruit){
 
@@ -169,6 +187,14 @@ Supprimer
 <div class="total">
 Total : <?php echo $total; ?> DH
 </div>
+
+<?php } else { ?>
+
+<div class="empty">
+Votre panier est vide
+</div>
+
+<?php } ?>
 
 </div>
 

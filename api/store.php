@@ -6,32 +6,55 @@ if(!isset($_SESSION['user'])){
     exit();
 }
 
+if(!isset($_SESSION['panier'])){
+    $_SESSION['panier'] = [];
+}
+
 $fruits = [
     [
         "name"=>"Pomme",
         "price"=>10,
-        "image"=>"https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=1000&auto=format&fit=crop"
+        "image"=>"/pomme-rouge-scaled.webp"
     ],
     [
         "name"=>"Banane",
         "price"=>8,
-        "image"=>"https://images.unsplash.com/photo-1574226516831-e1dff420e37f?q=80&w=1000&auto=format&fit=crop"
+        "image"=>"/photo-1587132137056-bfbf0166836e.avif"
     ],
     [
         "name"=>"Poire",
         "price"=>12,
-        "image"=>"https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=1000&auto=format&fit=crop"
+        "image"=>"/Poire.webp"
     ]
 ];
 
 if(isset($_POST['add'])){
 
-    $_SESSION['panier'][] = [
-        "name"=>$_POST['name'],
-        "price"=>$_POST['price'],
-        "image"=>$_POST['image'],
-        "quantity"=>$_POST['quantity']
+    $newFruit = [
+        "name" => $_POST['name'],
+        "price" => $_POST['price'],
+        "image" => $_POST['image'],
+        "quantity" => (int)$_POST['quantity']
     ];
+
+    $found = false;
+
+    foreach($_SESSION['panier'] as $index => $item){
+
+        if($item['name'] == $newFruit['name']){
+
+            $_SESSION['panier'][$index]['quantity'] += $newFruit['quantity'];
+
+            $found = true;
+
+            break;
+        }
+    }
+
+    if(!$found){
+
+        $_SESSION['panier'][] = $newFruit;
+    }
 }
 
 $count = count($_SESSION['panier']);
@@ -45,6 +68,7 @@ $count = count($_SESSION['panier']);
 <title>Store</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -124,6 +148,11 @@ background:white;
 border-radius:20px;
 overflow:hidden;
 box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .card img{
@@ -140,7 +169,7 @@ padding:20px;
 color:#16a34a;
 font-size:22px;
 font-weight:bold;
-margin-bottom:15px;
+margin:15px 0;
 }
 
 input{
@@ -160,7 +189,13 @@ color:white;
 border-radius:10px;
 font-size:17px;
 cursor:pointer;
+transition:0.3s;
 }
+
+button:hover{
+background:#16a34a;
+}
+
 </style>
 
 </head>
