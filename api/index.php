@@ -1203,6 +1203,19 @@ img, svg { display: block; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+        <div class="exercise-item atelier">
+          <div class="exercise-number">★</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — E-Fruit</h3>
+            <p class="exercise-desc">un atelier complet pour un E-Fruit site web.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="efruit_store/login.php" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
