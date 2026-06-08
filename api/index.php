@@ -1191,7 +1191,7 @@ img, svg { display: block; }
         </div>
         -->
         <div class="exercise-item atelier">
-          <div class="exercise-number">★</div>
+          <div class="exercise-number">02</div>
           <div class="exercise-content">
             <h3 class="exercise-title">Atelier — Inscription</h3>
             <p class="exercise-desc">Formulaire d'inscription complet : saisie des informations personnelles.</p>
@@ -1203,6 +1203,21 @@ img, svg { display: block; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">03</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — Upload de fichiers en PHP</h3>
+            <p class="exercise-desc">Formulaire d'upload de fichiers : saisie des informations .</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
         <div class="exercise-item atelier">
           <div class="exercise-number">★</div>
           <div class="exercise-content">
@@ -1216,6 +1231,147 @@ img, svg { display: block; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">04</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — Gestion des étudiants</h3>
+            <p class="exercise-desc">Gestion des étudiants : saisie des informations et modification.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">05</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — Gestion des sessions, cookies</h3>
+            <p class="exercise-desc">Gestion des sessions et cookies : saisie des informations et modification.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">06</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — POO</h3>
+            <p class="exercise-desc">Introduction à la programmation orientée objet en PHP.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">07</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — Application E-Fruits</h3>
+            <p class="exercise-desc">Application complète pour la gestion des e-fruits.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">08</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — application gestion des etudiants</h3>
+            <p class="exercise-desc">Application pour la gestion des étudiants.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">09</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — La Pagination en PHP</h3>
+            <p class="exercise-desc">Gestion de la pagination dans les applications PHP.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">10</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — Ajax Reponse HTML</h3>
+            <p class="exercise-desc">Gestion des réponses HTML via Ajax dans les applications PHP.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">11</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — Ajax Reponse Json</h3>
+            <p class="exercise-desc">Gestion des réponses JSON via Ajax dans les applications PHP.</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">12</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier —  services web</h3>
+            <p class="exercise-desc">services web</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="exercise-item atelier">
+          <div class="exercise-number">13</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">Atelier — Burger_Code</h3>
+            <p class="exercise-desc">Code de base pour un burger</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">PHP</span>
+            </div>
+          </div>
+          <a href="" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
