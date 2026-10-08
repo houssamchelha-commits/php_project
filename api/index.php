@@ -1372,6 +1372,23 @@ img, svg { display: block; }
           </a>
         </div>
 
+        <div class="exercise-item atelier">
+          <div class="exercise-number">Gestion de projets</div>
+          <div class="exercise-content">
+            <h3 class="exercise-title">M202</h3>
+            <p class="exercise-desc">Module Aproche Agile</p>
+            <div class="exercise-tags">
+              <span class="ex-tag">Modèle en cascade/Agile Scrum</span>
+            </div>
+          </div>
+          <a href="m202.php" class="exercise-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+
+
+
       </div>
     </div>
   </section>
