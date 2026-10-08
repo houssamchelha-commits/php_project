@@ -967,6 +967,48 @@ img, svg { display: block; }
   .project-badge { position: static; align-self: flex-start; }
 }
 
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+
+  background-image: url("bpxxqqvps4h91.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+
+  background: url("bpxxqqvps4h91.gif") center center / cover no-repeat;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-noise,
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content,
+.hero-scroll-hint {
+  position: relative;
+  z-index: 2;
+}
+
   </style>
 </head>
 <body>
@@ -1007,6 +1049,7 @@ img, svg { display: block; }
       <div class="scroll-line"></div>
     </div>
   </section>
+  
 
   <!-- ABOUT -->
   <section class="section about" id="about">
