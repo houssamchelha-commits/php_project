@@ -990,6 +990,8 @@ img, svg { display: block; }
 .resource-card:hover{transform:translateY(-3px);border-color:var(--border-hover);background:rgba(68,68,78,.9)}
 .resource-icon{width:45px;height:45px;flex:0 0 45px;border:1px solid rgba(113,90,90,.3);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--accent-light);background:rgba(113,90,90,.1)}
 .resource-icon svg{width:20px;height:20px}
+.resource-icon.project-logo{width:56px;height:56px;flex-basis:56px;padding:5px;border-color:rgba(8,120,249,.55);background:rgba(245,247,255,.94)!important}
+.resource-icon.project-logo img{width:100%;height:100%;object-fit:contain}
 .resource-content{flex:1;min-width:0}
 .resource-title{font-size:1rem;font-weight:500;color:var(--text-light);margin-bottom:.2rem}
 .resource-desc{font-size:.78rem;color:var(--text-muted)}
@@ -1438,7 +1440,7 @@ tr:nth-child(odd) {
 <nav class="navbar" id="navbar">
   <a class="brand-logo nav-logo" href="index.php" aria-label="Accueil — Houssam Chelha">
     <span class="brand-orbit">
-      <img src="/images/logo-projet.png" alt="Logo du portfolio Houssam Chelha">
+      <img src="/images/houssam.png" alt="Portrait de Houssam Chelha">
       <span class="brand-particle"></span><span class="brand-particle"></span>
       <span class="brand-particle"></span><span class="brand-particle"></span>
     </span>
@@ -1494,7 +1496,7 @@ tr:nth-child(odd) {
 <div class="container">
   <div class="section-header"><span class="section-tag">02 / Projets</span><h2 class="section-title">Mes projets</h2></div>
   <div class="resource-grid">
-    <article class="resource-card reveal"><div class="resource-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9h18l-2 11H5L3 9Z"/><path d="M7 9l5-6 5 6M9 13v3M15 13v3"/></svg></div><div class="resource-content"><h3 class="resource-title">Mawjoud Marketplace</h3><p class="resource-desc">Découvrir le projet ou consulter son code source.</p><div class="project-links"><a href="https://mawjoud-marketplace.vercel.app/" target="_blank" rel="noopener noreferrer">Voir le site</a><a href="https://github.com/houssamchelha-commits/Mawjoud" target="_blank" rel="noopener noreferrer">Voir le projet sur GitHub</a></div></div></article>
+    <article class="resource-card reveal"><div class="resource-icon project-logo"><img src="/images/logo-projet.png" alt="Logo Mawjoud Marketplace"></div><div class="resource-content"><h3 class="resource-title">Mawjoud Marketplace</h3><p class="resource-desc">Découvrir le projet ou consulter son code source.</p><div class="project-links"><a href="https://mawjoud-marketplace.vercel.app/" target="_blank" rel="noopener noreferrer">Voir le site</a><a href="https://github.com/houssamchelha-commits/Mawjoud" target="_blank" rel="noopener noreferrer">Voir le projet sur GitHub</a></div></div></article>
   </div>
 </div>
 </section>
@@ -1513,7 +1515,7 @@ tr:nth-child(odd) {
 </section>
 </main>
 
-<footer class="footer"><div class="container"><div class="footer-content"><a class="brand-logo footer-logo" href="index.php" aria-label="Accueil — Houssam Chelha"><span class="brand-orbit"><img src="/images/logo-projet.png" alt="Logo du portfolio Houssam Chelha"><span class="brand-particle"></span><span class="brand-particle"></span><span class="brand-particle"></span><span class="brand-particle"></span></span></a><p class="footer-text">Approche Agile — Portfolio</p><a class="footer-made" href="index.php">← Retour au portfolio</a></div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-content"><a class="brand-logo footer-logo" href="index.php" aria-label="Accueil — Houssam Chelha"><span class="brand-orbit"><img src="/images/houssam.png" alt="Portrait de Houssam Chelha"><span class="brand-particle"></span><span class="brand-particle"></span><span class="brand-particle"></span><span class="brand-particle"></span></span></a><p class="footer-text">Approche Agile — Portfolio</p><a class="footer-made" href="index.php">← Retour au portfolio</a></div></div></footer>
 
 <script>
 const navbar=document.getElementById('navbar'),navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');

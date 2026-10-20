@@ -1417,7 +1417,7 @@ tr:nth-child(odd) {
   <nav class="navbar" id="navbar">
     <a class="brand-logo nav-logo" href="#hero" aria-label="Accueil — Houssam Chelha">
       <span class="brand-orbit">
-        <img src="/images/logo-projet.png" alt="Logo du portfolio Houssam Chelha">
+        <img src="/images/houssam.png" alt="Portrait de Houssam Chelha">
         <span class="brand-particle"></span><span class="brand-particle"></span>
         <span class="brand-particle"></span><span class="brand-particle"></span>
       </span>
@@ -1906,7 +1906,7 @@ tr:nth-child(odd) {
       <div class="footer-content">
         <a class="brand-logo footer-logo" href="#hero" aria-label="Retour en haut — Houssam Chelha">
           <span class="brand-orbit">
-            <img src="/images/logo-projet.png" alt="Logo du portfolio Houssam Chelha">
+            <img src="/images/houssam.png" alt="Portrait de Houssam Chelha">
             <span class="brand-particle"></span><span class="brand-particle"></span>
             <span class="brand-particle"></span><span class="brand-particle"></span>
           </span>
