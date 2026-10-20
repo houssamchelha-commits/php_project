@@ -1282,11 +1282,146 @@ tr:nth-child(odd) {
   }
 }
 
-</style>
+
+.global-cursor-star {
+  position: fixed;
+  z-index: 2000;
+  pointer-events: none;
+  color: var(--star-color, #16C8FF);
+  font-size: var(--star-size, 13px);
+  line-height: 1;
+  text-shadow: 0 0 10px currentColor;
+  animation: globalCursorStarFade 700ms ease-out forwards;
+}
+
+@keyframes globalCursorStarFade {
+  from { opacity: 0.95; transform: translate(-50%, -50%) scale(0.65) rotate(0); }
+  to { opacity: 0; transform: translate(-50%, -85%) scale(1.3) rotate(35deg); }
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .global-cursor-star { display: none; animation: none; }
+}
+
+.brand-logo {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  cursor: pointer !important;
+}
+
+.brand-orbit {
+  position: relative;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+}
+
+.brand-orbit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(22, 200, 255, 0.75);
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(8, 120, 249, 0.28), inset 0 0 12px rgba(240, 42, 214, 0.16);
+  animation: brandOrbitPulse 2.8s ease-in-out infinite;
+}
+
+.brand-orbit img {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 24%;
+  image-rendering: pixelated;
+  box-shadow: 0 0 12px rgba(240, 42, 214, 0.38);
+}
+
+.brand-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 1px;
+  background: var(--particle-color, var(--color-cyan));
+  box-shadow: 0 0 8px currentColor;
+  opacity: 0;
+  animation: brandParticleBurst 2.4s ease-out infinite;
+}
+
+.brand-particle:nth-child(2) { --particle-color: var(--color-cyan); top: 2px; left: 8px; }
+.brand-particle:nth-child(3) { --particle-color: var(--color-primary); top: 9px; right: 1px; animation-delay: 0.6s; }
+.brand-particle:nth-child(4) { --particle-color: var(--color-purple); bottom: 4px; right: 7px; animation-delay: 1.2s; }
+.brand-particle:nth-child(5) { --particle-color: var(--color-cyan); bottom: 9px; left: 1px; animation-delay: 1.8s; }
+
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #050A1B !important;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 10, 27, 0.72), rgba(5, 10, 27, 0.42) 50%, rgba(5, 10, 27, 0.72)),
+    linear-gradient(0deg, rgba(5, 10, 27, 0.68), rgba(5, 10, 27, 0.38)),
+    url("/images/footer-pic.png") center 58% / cover no-repeat;
+  box-shadow: inset 0 18px 40px rgba(5, 10, 27, 0.7);
+}
+
+.footer .container, .footer-content {
+  position: relative;
+  z-index: 1;
+}
+
+.footer .brand-orbit {
+  width: 64px;
+  height: 64px;
+}
+
+.footer .brand-orbit img {
+  width: 54px;
+  height: 54px;
+}
+
+@keyframes brandOrbitPulse {
+  0%, 100% { transform: scale(0.96); opacity: 0.72; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes brandParticleBurst {
+  0%, 12% { opacity: 0; transform: translate(0, 0) scale(0.55); }
+  25% { opacity: 1; }
+  72% { opacity: 0.75; }
+  100% { opacity: 0; transform: translate(var(--particle-x, 8px), var(--particle-y, -10px)) scale(0.3); }
+}
+
+.brand-particle:nth-child(2) { --particle-x: -7px; --particle-y: -12px; }
+.brand-particle:nth-child(3) { --particle-x: 11px; --particle-y: -7px; }
+.brand-particle:nth-child(4) { --particle-x: 8px; --particle-y: 10px; }
+.brand-particle:nth-child(5) { --particle-x: -10px; --particle-y: 7px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-orbit::before, .brand-particle { animation: none; }
+  .brand-particle { opacity: 0.8; }
+}</style>
 </head>
 <body>
   <nav class="navbar" id="navbar">
-    <div class="nav-logo">Chelha Houssam</div>
+    <a class="brand-logo nav-logo" href="#hero" aria-label="Accueil — Houssam Chelha">
+      <span class="brand-orbit">
+        <img src="/images/houssam.png" alt="Portrait de Houssam Chelha">
+        <span class="brand-particle"></span><span class="brand-particle"></span>
+        <span class="brand-particle"></span><span class="brand-particle"></span>
+      </span>
+    </a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -1769,7 +1904,13 @@ tr:nth-child(odd) {
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <span class="footer-logo">Celha Houssam</span>
+        <a class="brand-logo footer-logo" href="#hero" aria-label="Retour en haut — Houssam Chelha">
+          <span class="brand-orbit">
+            <img src="/images/houssam.png" alt="Portrait de Houssam Chelha">
+            <span class="brand-particle"></span><span class="brand-particle"></span>
+            <span class="brand-particle"></span><span class="brand-particle"></span>
+          </span>
+        </a>
         <p class="footer-text">© 2025 Houssam Chelha — Stagiaire en Développement Digital</p>
         <p class="footer-made"> &lt;3 </p>
       </div>
@@ -1894,5 +2035,31 @@ const sectionObserver = new IntersectionObserver((entries) => {
 sections.forEach(s => sectionObserver.observe(s));
 
   </script>
+<script>
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
+
+  let lastStarTime = 0;
+  const colors = ['#16C8FF', '#F02AD6', '#8956F6'];
+
+  document.addEventListener('pointermove', event => {
+    if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+
+    const now = performance.now();
+    if (now - lastStarTime < 45) return;
+    lastStarTime = now;
+
+    const star = document.createElement('span');
+    star.className = 'global-cursor-star';
+    star.textContent = Math.random() > 0.45 ? '✦' : '✧';
+    star.style.left = `${event.clientX}px`;
+    star.style.top = `${event.clientY}px`;
+    star.style.setProperty('--star-color', colors[Math.floor(Math.random() * colors.length)]);
+    star.style.setProperty('--star-size', `${10 + Math.random() * 8}px`);
+    document.body.appendChild(star);
+    star.addEventListener('animationend', () => star.remove(), { once: true });
+  });
+})();
+</script>
 </body>
 </html>

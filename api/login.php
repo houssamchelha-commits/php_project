@@ -363,7 +363,26 @@ tr:nth-child(odd) {
   }
 }
 
-</style>
+
+.global-cursor-star {
+  position: fixed;
+  z-index: 2000;
+  pointer-events: none;
+  color: var(--star-color, #16C8FF);
+  font-size: var(--star-size, 13px);
+  line-height: 1;
+  text-shadow: 0 0 10px currentColor;
+  animation: globalCursorStarFade 700ms ease-out forwards;
+}
+
+@keyframes globalCursorStarFade {
+  from { opacity: 0.95; transform: translate(-50%, -50%) scale(0.65) rotate(0); }
+  to { opacity: 0; transform: translate(-50%, -85%) scale(1.3) rotate(35deg); }
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .global-cursor-star { display: none; animation: none; }
+}</style>
 </head>
 <body>
 
@@ -391,5 +410,31 @@ Connexion
 
 </div>
 
+<script>
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
+
+  let lastStarTime = 0;
+  const colors = ['#16C8FF', '#F02AD6', '#8956F6'];
+
+  document.addEventListener('pointermove', event => {
+    if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+
+    const now = performance.now();
+    if (now - lastStarTime < 45) return;
+    lastStarTime = now;
+
+    const star = document.createElement('span');
+    star.className = 'global-cursor-star';
+    star.textContent = Math.random() > 0.45 ? '✦' : '✧';
+    star.style.left = `${event.clientX}px`;
+    star.style.top = `${event.clientY}px`;
+    star.style.setProperty('--star-color', colors[Math.floor(Math.random() * colors.length)]);
+    star.style.setProperty('--star-size', `${10 + Math.random() * 8}px`);
+    document.body.appendChild(star);
+    star.addEventListener('animationend', () => star.remove(), { once: true });
+  });
+})();
+</script>
 </body>
 </html>
