@@ -972,7 +972,7 @@ img, svg { display: block; }
   min-height: 100vh;
   overflow: hidden;
 
-  background-image: url("bpxxqqvps4h91.gif");
+  background-image: url("/images/bpxxqqvps4h91.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -983,7 +983,7 @@ img, svg { display: block; }
   min-height: 100vh;
   overflow: hidden;
 
-  background: url("bpxxqqvps4h91.gif") center center / cover no-repeat;
+  background: url("/images/bpxxqqvps4h91.gif") center center / cover no-repeat;
 }
 
 .hero::before {
@@ -1061,7 +1061,7 @@ img, svg { display: block; }
       <div class="about-grid">
         <div class="about-card">
           <div class="about-avatar">
-            <div class="avatar-initials" style="overflow: hidden;"><img width="100%" src="/5fa04d40-cdc0-4484-a99d-d2c31afa4ab0.png" alt=""></div>
+            <div class="avatar-initials" style="overflow: hidden;"><img width="100%" src="/images/5fa04d40-cdc0-4484-a99d-d2c31afa4ab0.png" alt=""></div>
             <div class="avatar-ring"></div>
           </div>
           <div class="about-meta">
@@ -1232,7 +1232,7 @@ img, svg { display: block; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
-        -->
+        
         <div class="exercise-item atelier">
           <div class="exercise-number">02</div>
           <div class="exercise-content">
@@ -1414,7 +1414,7 @@ img, svg { display: block; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
-
+      -->
         <div class="exercise-item atelier">
           <div class="exercise-number">Gestion de projets</div>
           <div class="exercise-content">

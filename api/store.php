@@ -14,17 +14,17 @@ $fruits = [
     [
         "name"=>"Pomme",
         "price"=>10,
-        "image"=>"/pomme-rouge-scaled.webp"
+        "image"=>"/images/pomme-rouge-scaled.webp"
     ],
     [
         "name"=>"Banane",
         "price"=>8,
-        "image"=>"/photo-1587132137056-bfbf0166836e.avif"
+        "image"=>"/images/photo-1587132137056-bfbf0166836e.avif"
     ],
     [
         "name"=>"Poire",
         "price"=>12,
-        "image"=>"/Poire.webp"
+        "image"=>"/images/Poire.webp"
     ]
 ];
 
