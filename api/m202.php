@@ -1438,7 +1438,7 @@ tr:nth-child(odd) {
 <nav class="navbar" id="navbar">
   <a class="brand-logo nav-logo" href="index.php" aria-label="Accueil — Houssam Chelha">
     <span class="brand-orbit">
-      <img src="/images/houssam.png" alt="Portrait de Houssam Chelha">
+      <img src="/images/logo-projet.png" alt="Logo du portfolio Houssam Chelha">
       <span class="brand-particle"></span><span class="brand-particle"></span>
       <span class="brand-particle"></span><span class="brand-particle"></span>
     </span>
@@ -1513,7 +1513,7 @@ tr:nth-child(odd) {
 </section>
 </main>
 
-<footer class="footer"><div class="container"><div class="footer-content"><a class="brand-logo footer-logo" href="index.php" aria-label="Accueil — Houssam Chelha"><span class="brand-orbit"><img src="/images/houssam.png" alt="Portrait de Houssam Chelha"><span class="brand-particle"></span><span class="brand-particle"></span><span class="brand-particle"></span><span class="brand-particle"></span></span></a><p class="footer-text">Approche Agile — Portfolio</p><a class="footer-made" href="index.php">← Retour au portfolio</a></div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-content"><a class="brand-logo footer-logo" href="index.php" aria-label="Accueil — Houssam Chelha"><span class="brand-orbit"><img src="/images/logo-projet.png" alt="Logo du portfolio Houssam Chelha"><span class="brand-particle"></span><span class="brand-particle"></span><span class="brand-particle"></span><span class="brand-particle"></span></span></a><p class="footer-text">Approche Agile — Portfolio</p><a class="footer-made" href="index.php">← Retour au portfolio</a></div></div></footer>
 
 <script>
 const navbar=document.getElementById('navbar'),navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');
