@@ -967,6 +967,43 @@ img, svg { display: block; }
   .project-badge { position: static; align-self: flex-start; }
 }
 
+.music-toggle {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(55, 53, 62, 0.92);
+  color: var(--text-light);
+  font: 400 0.78rem var(--font-sans);
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.music-toggle:hover, .music-toggle:focus-visible {
+  border-color: var(--accent-light);
+  background: var(--bg-secondary);
+}
+
+.music-toggle:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
+.music-toggle svg { width: 17px; height: 17px; color: var(--accent-light); }
+
+@media (max-width: 480px) {
+  .music-toggle { right: 0.85rem; bottom: 0.85rem; }
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
@@ -1833,7 +1870,7 @@ tr:nth-child(odd) {
               <span class="ex-tag">Modèle en cascade/Agile Scrum</span>
             </div>
           </div>
-          <a href="m202.php" class="exercise-link">
+          <a href="m202.php" class="exercise-link" aria-label="Ouvrir le module M202">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -1916,6 +1953,15 @@ tr:nth-child(odd) {
       </div>
     </div>
   </footer>
+
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="Activer la musique de piano" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </svg>
+    <span id="musicToggleLabel">Activer la musique</span>
+  </button>
 
   <script>
     const navbar = document.getElementById('navbar');
@@ -2035,6 +2081,171 @@ const sectionObserver = new IntersectionObserver((entries) => {
 sections.forEach(s => sectionObserver.observe(s));
 
   </script>
+  <script>
+(() => {
+  const toggle = document.getElementById('musicToggle');
+  const label = document.getElementById('musicToggleLabel');
+  const chords = [
+    [261.63, 392.00, 493.88, 587.33],
+    [220.00, 329.63, 392.00, 523.25],
+    [174.61, 261.63, 349.23, 440.00],
+    [196.00, 293.66, 392.00, 493.88]
+  ];
+  let audioContext;
+  let masterGain;
+  let noteTimer;
+  let chordIndex = 0;
+  let noteIndex = 0;
+  let playing = false;
+  let startPromise;
+
+  function updateButton(isPlaying, message) {
+    playing = isPlaying;
+    toggle.setAttribute('aria-pressed', String(isPlaying));
+    toggle.setAttribute('aria-label', message || (isPlaying ? 'Désactiver la musique de piano' : 'Activer la musique de piano'));
+    label.textContent = message || (isPlaying ? 'Désactiver la musique' : 'Activer la musique');
+  }
+
+  function playNote(frequency) {
+    const noteGain = audioContext.createGain();
+    const lowPass = audioContext.createBiquadFilter();
+    lowPass.type = 'lowpass';
+    lowPass.frequency.value = 2800;
+    lowPass.connect(noteGain);
+    noteGain.connect(masterGain);
+
+    const now = audioContext.currentTime;
+    noteGain.gain.setValueAtTime(0.0001, now);
+    noteGain.gain.linearRampToValueAtTime(0.18, now + 0.025);
+    noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4);
+
+    [[1, 0.72], [2, 0.2], [3, 0.08]].forEach(([partial, level]) => {
+      const oscillator = audioContext.createOscillator();
+      const partialGain = audioContext.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.value = frequency * partial;
+      partialGain.gain.value = level;
+      oscillator.connect(partialGain);
+      partialGain.connect(lowPass);
+      oscillator.start(now);
+      oscillator.stop(now + 2.5);
+    });
+  }
+
+  function startNotes() {
+    const chord = chords[chordIndex];
+    playNote(chord[noteIndex]);
+    noteIndex += 1;
+    if (noteIndex === chord.length) {
+      noteIndex = 0;
+      chordIndex = (chordIndex + 1) % chords.length;
+    }
+  }
+
+  function startMusic() {
+    if (startPromise) return startPromise;
+
+    startPromise = (async () => {
+      if (!window.AudioContext) {
+        updateButton(false, 'Musique indisponible sur ce navigateur');
+        return;
+      }
+
+      if (!audioContext || audioContext.state === 'closed') {
+        audioContext = new AudioContext();
+        masterGain = audioContext.createGain();
+        masterGain.gain.value = 0.065;
+        masterGain.connect(audioContext.destination);
+      }
+
+      await audioContext.resume();
+      if (audioContext.state !== 'running') {
+        updateButton(false, 'Cliquez pour activer la musique');
+        return;
+      }
+
+      if (!playing) {
+        startNotes();
+        noteTimer = window.setInterval(startNotes, 1250);
+      }
+      updateButton(true);
+    })().finally(() => {
+      startPromise = null;
+    });
+
+    return startPromise;
+  }
+
+  async function stopMusic() {
+    window.clearInterval(noteTimer);
+    if (audioContext && audioContext.state !== 'closed') {
+      toggle.disabled = true;
+      const now = audioContext.currentTime;
+      masterGain.gain.cancelScheduledValues(now);
+      masterGain.gain.setValueAtTime(masterGain.gain.value, now);
+      masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
+      await new Promise(resolve => window.setTimeout(resolve, 400));
+      await audioContext.close();
+      audioContext = null;
+      masterGain = null;
+    }
+    updateButton(false);
+    toggle.disabled = false;
+  }
+
+  toggle.addEventListener('click', () => {
+    if (!playing && audioContext && audioContext.state === 'suspended') {
+      audioContext.resume().catch(() => updateButton(false, 'Cliquez pour réessayer la musique'));
+    }
+    const action = playing ? stopMusic() : startMusic();
+    action.catch(() => updateButton(false, 'Cliquez pour réessayer la musique'));
+  });
+
+  startMusic().catch(() => updateButton(false, 'Cliquez pour activer la musique'));
+})();
+  </script>
+<script>
+(() => {
+  document.addEventListener('click', event => {
+    if (!(event.target instanceof Element)) return;
+    const link = event.target.closest('.exercise-link[href="m202.php"]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    const destination = link.href;
+
+    try {
+      const audioContext = new AudioContext();
+      const gain = audioContext.createGain();
+      const filter = audioContext.createBiquadFilter();
+      const now = audioContext.currentTime;
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(3200, now);
+      filter.connect(gain);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(0.06, now + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      gain.connect(audioContext.destination);
+
+      [[260, 880, 0], [520, 1320, 0.055]].forEach(([startFrequency, endFrequency, offset]) => {
+        const oscillator = audioContext.createOscillator();
+        oscillator.type = 'square';
+        oscillator.frequency.setValueAtTime(startFrequency, now + offset);
+        oscillator.frequency.exponentialRampToValueAtTime(endFrequency, now + 0.19);
+        oscillator.connect(filter);
+        oscillator.start(now + offset);
+        oscillator.stop(now + 0.23);
+      });
+
+      window.setTimeout(() => window.location.assign(destination), 270);
+    } catch (error) {
+      console.error('Could not play the M202 transition sound:', error);
+      window.location.assign(destination);
+    }
+  });
+})();
+</script>
 <script>
 (() => {
   if (window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
