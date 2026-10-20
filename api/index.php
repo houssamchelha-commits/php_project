@@ -2086,24 +2086,64 @@ sections.forEach(s => sectionObserver.observe(s));
   const toggle = document.getElementById('musicToggle');
   const label = document.getElementById('musicToggleLabel');
   const chords = [
-    [261.63, 392.00, 493.88, 587.33],
-    [220.00, 329.63, 392.00, 523.25],
-    [174.61, 261.63, 349.23, 440.00],
-    [196.00, 293.66, 392.00, 493.88]
+    [261.63, 329.63, 392.00, 493.88],
+    [220.00, 261.63, 329.63, 392.00],
+    [174.61, 220.00, 261.63, 329.63],
+    [196.00, 246.94, 293.66, 392.00]
   ];
+  const melody = [523.25, 392.00, 440.00, 329.63, 392.00, 329.63, 293.66, 392.00];
   let audioContext;
   let masterGain;
-  let noteTimer;
+  let chordTimer;
+  let melodyTimer;
+  let melodyStartTimer;
   let chordIndex = 0;
   let noteIndex = 0;
+  let activeChord;
   let playing = false;
-  let startPromise;
 
   function updateButton(isPlaying, message) {
     playing = isPlaying;
     toggle.setAttribute('aria-pressed', String(isPlaying));
     toggle.setAttribute('aria-label', message || (isPlaying ? 'Désactiver la musique de piano' : 'Activer la musique de piano'));
     label.textContent = message || (isPlaying ? 'Désactiver la musique' : 'Activer la musique');
+  }
+
+  function createChord(frequencies) {
+    const chordGain = audioContext.createGain();
+    chordGain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+    chordGain.connect(masterGain);
+
+    const oscillators = frequencies.map(frequency => {
+      const oscillator = audioContext.createOscillator();
+      const voiceGain = audioContext.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.value = frequency;
+      voiceGain.gain.value = 0.12;
+      oscillator.connect(voiceGain);
+      voiceGain.connect(chordGain);
+      oscillator.start();
+      return oscillator;
+    });
+
+    return { gain: chordGain, oscillators };
+  }
+
+  function changeChord() {
+    const now = audioContext.currentTime;
+    const nextChord = createChord(chords[chordIndex]);
+    nextChord.gain.gain.setValueAtTime(0.0001, now);
+    nextChord.gain.gain.linearRampToValueAtTime(0.3, now + 2.5);
+
+    if (activeChord) {
+      activeChord.gain.gain.cancelScheduledValues(now);
+      activeChord.gain.gain.setValueAtTime(0.3, now);
+      activeChord.gain.gain.linearRampToValueAtTime(0.0001, now + 2.5);
+      activeChord.oscillators.forEach(oscillator => oscillator.stop(now + 2.6));
+    }
+
+    activeChord = nextChord;
+    chordIndex = (chordIndex + 1) % chords.length;
   }
 
   function playNote(frequency) {
@@ -2116,10 +2156,10 @@ sections.forEach(s => sectionObserver.observe(s));
 
     const now = audioContext.currentTime;
     noteGain.gain.setValueAtTime(0.0001, now);
-    noteGain.gain.linearRampToValueAtTime(0.18, now + 0.025);
+    noteGain.gain.linearRampToValueAtTime(0.1, now + 0.04);
     noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4);
 
-    [[1, 0.72], [2, 0.2], [3, 0.08]].forEach(([partial, level]) => {
+    [[1, 0.68], [2, 0.2], [3, 0.06]].forEach(([partial, level]) => {
       const oscillator = audioContext.createOscillator();
       const partialGain = audioContext.createGain();
       oscillator.type = 'sine';
@@ -2132,120 +2172,74 @@ sections.forEach(s => sectionObserver.observe(s));
     });
   }
 
-  function startNotes() {
-    const chord = chords[chordIndex];
-    playNote(chord[noteIndex]);
+  function playMelodyNote() {
+    playNote(melody[noteIndex]);
     noteIndex += 1;
-    if (noteIndex === chord.length) {
-      noteIndex = 0;
-      chordIndex = (chordIndex + 1) % chords.length;
+    if (noteIndex === melody.length) noteIndex = 0;
+  }
+
+  async function startMusic() {
+    if (!window.AudioContext) {
+      updateButton(false, 'Musique indisponible sur ce navigateur');
+      return;
     }
-  }
 
-  function startMusic() {
-    if (startPromise) return startPromise;
+    audioContext = new AudioContext();
+    masterGain = audioContext.createGain();
+    masterGain.gain.value = 0.12;
+    masterGain.connect(audioContext.destination);
+    await audioContext.resume();
 
-    startPromise = (async () => {
-      if (!window.AudioContext) {
-        updateButton(false, 'Musique indisponible sur ce navigateur');
-        return;
-      }
-
-      if (!audioContext || audioContext.state === 'closed') {
-        audioContext = new AudioContext();
-        masterGain = audioContext.createGain();
-        masterGain.gain.value = 0.065;
-        masterGain.connect(audioContext.destination);
-      }
-
-      await audioContext.resume();
-      if (audioContext.state !== 'running') {
-        updateButton(false, 'Cliquez pour activer la musique');
-        return;
-      }
-
-      if (!playing) {
-        startNotes();
-        noteTimer = window.setInterval(startNotes, 1250);
-      }
-      updateButton(true);
-    })().finally(() => {
-      startPromise = null;
-    });
-
-    return startPromise;
-  }
-
-  async function stopMusic() {
-    window.clearInterval(noteTimer);
-    if (audioContext && audioContext.state !== 'closed') {
-      toggle.disabled = true;
-      const now = audioContext.currentTime;
-      masterGain.gain.cancelScheduledValues(now);
-      masterGain.gain.setValueAtTime(masterGain.gain.value, now);
-      masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
-      await new Promise(resolve => window.setTimeout(resolve, 400));
+    if (audioContext.state !== 'running') {
       await audioContext.close();
       audioContext = null;
       masterGain = null;
+      updateButton(false, 'Cliquez pour activer la musique');
+      return;
     }
-    updateButton(false);
-    toggle.disabled = false;
+
+    updateButton(true);
+    changeChord();
+    melodyStartTimer = window.setTimeout(playMelodyNote, 1800);
+    chordTimer = window.setInterval(changeChord, 9000);
+    melodyTimer = window.setInterval(playMelodyNote, 3600);
   }
 
-  toggle.addEventListener('click', () => {
-    if (!playing && audioContext && audioContext.state === 'suspended') {
-      audioContext.resume().catch(() => updateButton(false, 'Cliquez pour réessayer la musique'));
+  async function stopMusic() {
+    window.clearInterval(chordTimer);
+    window.clearInterval(melodyTimer);
+    window.clearTimeout(melodyStartTimer);
+    if (audioContext && audioContext.state !== 'closed') {
+      const now = audioContext.currentTime;
+      masterGain.gain.cancelScheduledValues(now);
+      masterGain.gain.setValueAtTime(masterGain.gain.value, now);
+      masterGain.gain.linearRampToValueAtTime(0.0001, now + 0.6);
+      await new Promise(resolve => window.setTimeout(resolve, 650));
+      await audioContext.close();
+      audioContext = null;
+      masterGain = null;
+      activeChord = null;
     }
-    const action = playing ? stopMusic() : startMusic();
-    action.catch(() => updateButton(false, 'Cliquez pour réessayer la musique'));
-  });
+    updateButton(false);
+  }
 
-  startMusic().catch(() => updateButton(false, 'Cliquez pour activer la musique'));
+  toggle.addEventListener('click', async () => {
+    toggle.disabled = true;
+    try {
+      if (playing) {
+        await stopMusic();
+      } else {
+        await startMusic();
+      }
+    } catch (error) {
+      console.error('Could not toggle background music:', error);
+      updateButton(false, 'Cliquez pour réessayer la musique');
+    } finally {
+      toggle.disabled = false;
+    }
+  });
 })();
   </script>
-<script>
-(() => {
-  document.addEventListener('click', event => {
-    if (!(event.target instanceof Element)) return;
-    const link = event.target.closest('.exercise-link[href="m202.php"]');
-    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-
-    event.preventDefault();
-    const destination = link.href;
-
-    try {
-      const audioContext = new AudioContext();
-      const gain = audioContext.createGain();
-      const filter = audioContext.createBiquadFilter();
-      const now = audioContext.currentTime;
-
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(3200, now);
-      filter.connect(gain);
-      gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.linearRampToValueAtTime(0.06, now + 0.015);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
-      gain.connect(audioContext.destination);
-
-      [[260, 880, 0], [520, 1320, 0.055]].forEach(([startFrequency, endFrequency, offset]) => {
-        const oscillator = audioContext.createOscillator();
-        oscillator.type = 'square';
-        oscillator.frequency.setValueAtTime(startFrequency, now + offset);
-        oscillator.frequency.exponentialRampToValueAtTime(endFrequency, now + 0.19);
-        oscillator.connect(filter);
-        oscillator.start(now + offset);
-        oscillator.stop(now + 0.23);
-      });
-
-      window.setTimeout(() => window.location.assign(destination), 270);
-    } catch (error) {
-      console.error('Could not play the M202 transition sound:', error);
-      window.location.assign(destination);
-    }
-  });
-})();
-</script>
 <script>
 (() => {
   if (window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
