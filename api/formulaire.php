@@ -108,6 +108,7 @@ button:hover{
   border-left:4px solid var(--accent);
 }
 </style>
+<link rel="stylesheet" href="/theme.css">
 </head>
 
 <body>

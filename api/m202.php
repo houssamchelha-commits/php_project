@@ -1001,6 +1001,7 @@ img, svg { display: block; }
 .section-alt{background:var(--bg-secondary)}
 @media(max-width:700px){.axis-grid{grid-template-columns:1fr}.axis-card{padding:1.7rem}.module-hero{min-height:78vh}}
 </style>
+<link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 <nav class="navbar" id="navbar">

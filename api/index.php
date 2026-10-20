@@ -1010,6 +1010,7 @@ img, svg { display: block; }
 }
 
   </style>
+  <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
   <nav class="navbar" id="navbar">

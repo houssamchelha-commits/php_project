@@ -134,7 +134,7 @@ color:#777;
 }
 
 </style>
-
+<link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
